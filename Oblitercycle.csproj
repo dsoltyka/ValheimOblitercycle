@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Oblitercycle</AssemblyName>
+    <RootNamespace>Oblitercycle</RootNamespace>
+    <Version>1.0.0</Version>
+    <Description>The Obliterator recycles instead of just burning: recover the trophies from crafted items (default), or break items down into their materials. Server-synced config.</Description>
+    <ThunderstoreWebsite>https://github.com/dsoltyka/ValheimOblitercycle</ThunderstoreWebsite>
+  </PropertyGroup>
+
+  <!--
+    Game/BepInEx/Jotunn references, deploy and Thunderstore packaging come from the shared
+    ValheimModBuild repo, expected next to this one:
+      https://github.com/dsoltyka/ValheimModBuild
+  -->
+  <PropertyGroup>
+    <ValheimModBuild>$(MSBuildThisFileDirectory)..\ValheimModBuild\Valheim.Mod.props</ValheimModBuild>
+  </PropertyGroup>
+  <Import Project="$(ValheimModBuild)" Condition="Exists('$(ValheimModBuild)')" />
+  <Target Name="RequireValheimModBuild" BeforeTargets="Build;Restore;CollectPackageReferences" Condition="!Exists('$(ValheimModBuild)')">
+    <Error Text="Shared build props not found at '$(ValheimModBuild)'. Clone https://github.com/dsoltyka/ValheimModBuild next to this repo (see BUILDING.md)." />
+  </Target>
+
+</Project>

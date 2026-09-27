@@ -1,0 +1,10 @@
+{
+  "name": "Oblitercycle",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/dsoltyka/ValheimOblitercycle",
+  "description": "The Obliterator recycles instead of just burning: recover the trophies from crafted items (default), or break items down into their materials. Server-synced config.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2350",
+    "ValheimModding-Jotunn-2.30.2"
+  ]
+}
